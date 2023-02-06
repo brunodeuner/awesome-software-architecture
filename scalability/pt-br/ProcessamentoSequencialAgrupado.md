@@ -6,13 +6,13 @@ Pilares ordenados por ordem de importância: eficiência, escalabiliade, manutenib
 
 Volume esperado:
 
-| Percentil | TPS    |
-| :---      | ---:   |
-| 99,99     | 10.000 |
-| 99        | 1000   |
-| 90        | 500    | 
-| 50        | 100    |
-| 10        | 10     |
+| Percentual | TPS    |
+| :---       | ---:   |
+| 99,99      | 10.000 |
+| 99         | 1000   |
+| 90         | 500    | 
+| 50         | 100    |
+| 10         | 10     |
 
 # Solução
 ![](ProcessamentoSequencialAgrupado.drawio.png)
