@@ -18,7 +18,7 @@ Volume esperado:
 ![](ProcessamentoSequencialAgrupado.drawio.png)
 
 A solução consiste em um unico consumidor consumir os eventos de transação financeira, o valor do agrupador
-consiste no resto da divisão do Id da transação por N, onde N é a quantidade desejada de escala horizontal.
+é igual ao resto da divisão do Id da transação por N, onde N é a quantidade desejada de escala horizontal.
 
 ## Kafka
 Criar uma partição por agrupador e um consumidor para cada partição.
@@ -29,8 +29,8 @@ Criar uma fila por agrupador e um consumidor para cada fila.
 Um único publicador no RabbitMQ suprirá p99 e conforme o aumento da escala horizontal desejada irá suprir o pico.
 
 ## Banco de dados
-Criar uma tabela que contenha uma coluna indexada pelo agrupador e criar um serviço que consuma um 
-unico agrupador.
+Criar uma tabela que contenha uma coluna indexada pelo agrupador, criar um serviço 
+que consuma um unico agrupador e que leia conforme a ordem da inserção.
 Um único publicador no banco de dados suprirá o pico.
 
 ## Diferenças entre as soluções
