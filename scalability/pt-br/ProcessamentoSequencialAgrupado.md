@@ -3,6 +3,7 @@ Fila contendo eventos de transação financeira que devem ser processadas sequenci
 incremental e reincidente.
 
 Pilares ordenados por ordem de importância: eficiência, escalabiliade, manutenibilidade, performance.
+
 Volume esperado:
 
 | Percentil | TPS   |
