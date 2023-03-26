@@ -39,6 +39,3 @@ Um único publicador no banco de dados suprirá o pico.
 ## Diferenças entre as soluções
 - O banco de dados pode ser uma melhor escolha para retentativas em sistemas que precisam de uma ordem perfeita.
 - Caso os eventos não precisem ser armazenados o RabbitMQ provavelmente será a tecnologia mais eficiente.
-
-
-
