@@ -9,10 +9,10 @@ conforme um agrupamento mesmo quando processados com erro.
 
 A solução consiste em verificar se o Id processado possui erro, caso possua o mesmo deve ser armazenado
 para ser processado posteriormente, este armazenamento também deve ocorrer ao processar 
-com erro um evento. Uma lógica adicional deve ser criada para processar estes eventos.
+com erro um evento. 
 
 ## Reprocessamento usando a mesma solução de processamento normal
-Ao obter os eventos para reprocessamento, usar a mesma lógica do distribuidor.
+Ao obter os eventos para reprocessamento ou processar um evento com erro, usar a mesma lógica do distribuidor.
 
 ## Lógica do "agrupador possui erro?"
 Consultar um banco de dados para cada evento é custoso, como o consumidor agrupado não deve 
