@@ -1,8 +1,8 @@
 # Contexto
-Fila contendo eventos de transação financeira que devem ser processadas sequencialmente conforme Id 
+Fila contendo eventos de transaÃ§Ã£o financeira que devem ser processadas sequencialmente conforme Id 
 incremental e reincidente.
 
-Pilares ordenados por ordem de importância: eficiência, escalabiliade, manutenibilidade, performance.
+Pilares ordenados por ordem de importÃ¢ncia: eficiÃªncia, escalabiliade, manutenibilidade, performance.
 
 Volume esperado:
 
@@ -14,28 +14,28 @@ Volume esperado:
 | 50         | 100    |
 | 10         | 10     |
 
-# Solução
+# SoluÃ§Ã£o
 ![](ProcessamentoSequencialAgrupado.drawio.png)
 
-A solução consiste em um unico consumidor consumir os eventos de transação financeira, o valor do agrupador
-é igual ao resto da divisão do Id da transação por N, onde N é a quantidade desejada de escala horizontal.
+A soluÃ§Ã£o consiste em um unico consumidor consumir os eventos de transaÃ§Ã£o financeira, o valor do agrupador
+Ã© igual ao resto da divisÃ£o do Id da transaÃ§Ã£o por N, onde N Ã© a quantidade desejada de escala horizontal.
 
 ## Kafka
-Criar uma partição por agrupador e um consumidor para cada partição.
+Criar uma partiÃ§Ã£o por agrupador e um consumidor para cada partiÃ§Ã£o.
 
-Um único publicador no Kafka suprirá p90 e conforme o aumento da escala horizontal desejada irá suprir o pico.
+Um Ãºnico publicador no Kafka suprirÃ¡ p90 e conforme o aumento da escala horizontal desejada irÃ¡ suprir o pico.
 
 ## RabbitMQ
 Criar uma fila por agrupador e um consumidor para cada fila.
 
-Um único publicador no RabbitMQ suprirá p99 e conforme o aumento da escala horizontal desejada irá suprir o pico.
+Um Ãºnico publicador no RabbitMQ suprirÃ¡ p99 e conforme o aumento da escala horizontal desejada irÃ¡ suprir o pico.
 
 ## Banco de dados
-Criar uma tabela que contenha uma coluna indexada pelo agrupador, criar um serviço 
-que consuma um unico agrupador e que leia conforme a ordem da inserção.
+Criar uma tabela que contenha uma coluna indexada pelo agrupador, criar um serviÃ§o 
+que consuma um unico agrupador e que leia conforme a ordem da inserÃ§Ã£o.
 
-Um único publicador no banco de dados suprirá o pico.
+Um Ãºnico publicador no banco de dados suprirÃ¡ o pico.
 
-## Diferenças entre as soluções
+## DiferenÃ§as entre as soluÃ§Ãµes
 - O banco de dados pode ser uma melhor escolha para retentativas em sistemas que precisam de uma ordem perfeita.
-- Caso os eventos não precisem ser armazenados o RabbitMQ provavelmente será a tecnologia mais eficiente.
+- Caso os eventos nÃ£o precisem ser armazenados o RabbitMQ provavelmente serÃ¡ a tecnologia mais eficiente.

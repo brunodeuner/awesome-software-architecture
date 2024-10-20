@@ -1,29 +1,29 @@
 # Contexto
-Este documento È um incremento de 
-[processamento sequencial agrupado](ProcessamentoSequencialAgrupado.md) com a adiÁ„o de uma 
+Este documento √© um incremento de 
+[processamento sequencial agrupado](ProcessamentoSequencialAgrupado.md) com a adi√ß√£o de uma 
 complexidade de tratativa de erros, com o objetivo de manter a ordem dos eventos 
 conforme um agrupamento mesmo quando processados com erro.
 
-# SoluÁ„o
+# Solu√ß√£o
 ![](ProcessamentoSequencialAgrupadoComTratativaDeErros.drawio.png)
 
-A soluÁ„o consiste em verificar se o Id processado possui erro, caso possua o mesmo deve ser armazenado
-para ser processado posteriormente, este armazenamento tambÈm deve ocorrer ao processar 
+A solu√ß√£o consiste em verificar se o Id processado possui erro, caso possua o mesmo deve ser armazenado
+para ser processado posteriormente, este armazenamento tamb√©m deve ocorrer ao processar 
 com erro um evento. 
 
-## Reprocessamento usando a mesma soluÁ„o de processamento normal
-Ao obter os eventos para reprocessamento ou processar um evento com erro, usar a mesma lÛgica do distribuidor.
+## Reprocessamento usando a mesma solu√ß√£o de processamento normal
+Ao obter os eventos para reprocessamento ou processar um evento com erro, usar a mesma l√≥gica do distribuidor.
 
-## LÛgica do "agrupador possui erro?"
-Consultar um banco de dados para cada evento È custoso, como o consumidor agrupado n„o deve 
-possuir paralelismo pode ser criado uma lÛgica em memÛria, contendo os Id's com erro.
-… importante possuir um limite e ao atingi-lo este recurso n„o deve ser mais utilizado 
+## L√≥gica do "agrupador possui erro?"
+Consultar um banco de dados para cada evento √© custoso, como o consumidor agrupado n√£o deve 
+possuir paralelismo pode ser criado uma l√≥gica em mem√≥ria, contendo os Id's com erro.
+√â importante possuir um limite e ao atingi-lo este recurso n√£o deve ser mais utilizado 
 ou o consumo parar.
-Outra opÁ„o È um valor booleano informando se a aplicaÁ„o possui eventos com erro ou n„o,
+Outra op√ß√£o √© um valor booleano informando se a aplica√ß√£o possui eventos com erro ou n√£o,
 para evitar chamadas ao banco de dados.
 
 ## Armazenamento dos eventos com erro utilizando RabbitMQ ou Kafka
 Criar uma fila para retentativas.
 
 ## Armazenamento dos eventos com erro utilizando banco de dados
-Criar uma tabela para retentativas ou uma flag na prÛpria tabela de eventos.
+Criar uma tabela para retentativas ou uma flag na pr√≥pria tabela de eventos.
